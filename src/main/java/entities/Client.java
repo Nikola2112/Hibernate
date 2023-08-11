@@ -15,13 +15,7 @@ public class Client {
 
     @Column
     private String name;
-    public void setName(String name) {
-        if (name.length() >= 3 && name.length() <= 200) {
-            this.name = name;
-        } else {
-            throw new IllegalArgumentException("Name length must be between 3 and 200 characters.");
-        }
-    }
+
 }
 
 

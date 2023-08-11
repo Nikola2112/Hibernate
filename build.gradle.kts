@@ -10,9 +10,10 @@ repositories {
 }
 
 dependencies {
-    implementation("org.junit.jupiter:junit-jupiter:5.8.1")
+ implementation("com.javiersc.kotlin:kotlin-test-junit-jvm:0.1.0-alpha.15")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("junit:junit:4.13.1")
 
     annotationProcessor ("org.projectlombok:lombok:1.18.24")
     compileOnly ("org.projectlombok:lombok:1.18.24")
