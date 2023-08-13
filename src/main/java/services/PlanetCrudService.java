@@ -17,22 +17,7 @@ public class PlanetCrudService {
         this.sessionFactory = sessionFactory;
     }
 
-    private void validatePlanetId(String id) {
-        if (!id.matches("^[A-Z0-9]+$")) {
-            throw new IllegalArgumentException("Invalid planet ID format.");
-        }
-    }
-
-    private void validatePlanetName(String name) {
-        if (name.length() < 1 || name.length() > 500) {
-            throw new IllegalArgumentException("Name length must be between 1 and 500 characters.");
-        }
-    }
-
     public Planet save(Planet planet) {
-        validatePlanetName(planet.getName());
-        validatePlanetId(planet.getId());
-
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -44,8 +29,6 @@ public class PlanetCrudService {
     }
 
     public void deleteById(String id) {
-        validatePlanetId(id);
-
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -73,9 +56,6 @@ public class PlanetCrudService {
     }
 
     public Planet update(Planet planet) {
-        validatePlanetName(planet.getName());
-        validatePlanetId(planet.getId());
-
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 

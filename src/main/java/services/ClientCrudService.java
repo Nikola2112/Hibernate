@@ -12,20 +12,12 @@ import java.util.Optional;
 public class ClientCrudService {
 
     private SessionFactory sessionFactory;
-
     public ClientCrudService(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-    private void validateClientName(String name) {
-        if (name.length() < 3 || name.length() > 200) {
-            throw new IllegalArgumentException("Name length must be between 3 and 200 characters.");
-        }
-    }
 
     public Client save(Client client) {
-        validateClientName(client.getName());
-
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -64,8 +56,6 @@ public class ClientCrudService {
     }
 
     public Client update(Client client) {
-        validateClientName(client.getName());
-
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -75,4 +65,6 @@ public class ClientCrudService {
         session.close();
         return client;
     }
+
+
 }
