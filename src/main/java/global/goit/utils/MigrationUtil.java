@@ -1,4 +1,4 @@
-package utils;
+package global.goit.utils;
 
 
 import org.flywaydb.core.Flyway;

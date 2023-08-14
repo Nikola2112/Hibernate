@@ -1,8 +1,8 @@
-package utils;
+package global.goit.utils;
 
-import entities.Client;
-import entities.Planet;
-import entities.Ticket;
+import global.goit.entities.Client;
+import global.goit.entities.Ticket;
+import global.goit.entities.Planet;
 import lombok.Getter;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
