@@ -1,8 +1,8 @@
-package global.goit.utils;
+package utils;
 
-import global.goit.entities.Client;
-import global.goit.entities.Ticket;
-import global.goit.entities.Planet;
+import entities.Client;
+import entities.Ticket;
+import entities.Planet;
 import lombok.Getter;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -30,6 +30,10 @@ public class HibernateUtil {
 
     public static HibernateUtil getInstance() {
         return INSTANCE;
+    }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 
     public void close() {

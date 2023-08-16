@@ -16,6 +16,7 @@ dependencies {
     implementation("org.hibernate:hibernate-core:6.2.5.Final")
     implementation("org.postgresql:postgresql:42.6.0")
     compileOnly("org.projectlombok:lombok:1.18.24")
+
 }
 
 

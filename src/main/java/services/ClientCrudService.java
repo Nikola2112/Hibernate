@@ -1,44 +1,44 @@
-package global.goit.services;
+package services;
 
 
-import global.goit.entities.Planet;
+import entities.Client;
+import utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionException;
-
 import org.hibernate.Transaction;
 
 import java.util.List;
-import global.goit.utils.HibernateUtil;
-public class PlanetCrudService {
 
-    public void createPlanet(Planet planet) {
+public class ClientCrudService {
+
+    public void createClient(Client client) {
         try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.persist(planet);
+            session.persist(client);
             transaction.commit();
         } catch (SessionException e) {
             throw new RuntimeException();
         }
     }
 
-    public Planet readPlanet(String planetId) {
-        Planet planet;
+    public Client readClient(Long clientId) {
+        Client client;
         try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            planet = session.get(Planet.class, planetId);
+            client = session.get(Client.class, clientId);
             transaction.commit();
         } catch (SessionException e) {
             throw new RuntimeException();
         }
-        return planet;
+        return client;
     }
 
-    public void updatePlanet(String planetId, String name) {
+    public void updateClient(int clientId, String name) {
         try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.createQuery("UPDATE Planet SET name =: name WHERE id =: planet_id")
+            session.createQuery("UPDATE Client SET name =: name WHERE id =: client_id")
                     .setParameter("name", name)
-                    .setParameter("planet_id", planetId)
+                    .setParameter("client_id", clientId)
                     .executeUpdate();
             transaction.commit();
         } catch (SessionException e) {
@@ -46,11 +46,11 @@ public class PlanetCrudService {
         }
     }
 
-    public void deletePlanet(String planetId) {
+    public void deleteClient(int clientId) {
         try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.createQuery("DELETE FROM Planet WHERE id= :planet_id")
-                    .setParameter("planet_id", planetId)
+            session.createQuery("DELETE FROM Client WHERE id= :client_id")
+                    .setParameter("client_id", clientId)
                     .executeUpdate();
             transaction.commit();
         } catch (SessionException e) {
@@ -58,15 +58,15 @@ public class PlanetCrudService {
         }
     }
 
-    public List<Planet> getAllPlanets() {
-        List<Planet> planets;
+    public List<Client> getAllClients() {
+        List<Client> clients;
         try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            planets = session.createQuery("SELECT planet FROM Planet planet", Planet.class).list();
+            clients = session.createQuery("SELECT client FROM Client client", Client.class).list();
             transaction.commit();
         } catch (SessionException e) {
             throw new RuntimeException();
         }
-        return planets;
+        return clients;
     }
 }

@@ -1,4 +1,4 @@
-package global.goit.entities;
+package entities;
 
 import jakarta.persistence.*;
 import lombok.Data;

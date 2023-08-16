@@ -1,12 +1,13 @@
-package global.goit.utils;
-
+package utils;
 
 import org.flywaydb.core.Flyway;
+import utils.HibernateUtil;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class MigrationUtil {
+public class MigrationUtils {
 
     private static Properties properties;
 

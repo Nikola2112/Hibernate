@@ -1,18 +1,16 @@
-package global.goit;
+import entities.Client;
+import entities.Planet;
+import services.ClientCrudService;
+import services.PlanetCrudService;
+import utils.HibernateUtil;
 
-import global.goit.entities.Client;
-import global.goit.entities.Planet;
-import global.goit.services.ClientCrudService;
-import global.goit.services.PlanetCrudService;
-import global.goit.utils.HibernateUtil;
-
-import global.goit.utils.MigrationUtil;
+import utils.MigrationUtils;
 
 public class Launcher {
 
     public static void main(String[] args) {
 
-        MigrationUtil.checkMigration();
+        MigrationUtils.checkMigration();
 
         ClientCrudService clientService = new ClientCrudService();
 
@@ -24,9 +22,9 @@ public class Launcher {
 
         PlanetCrudService planetService = new PlanetCrudService();
 
-        planetService.createPlanet(new Planet("VENUS2", "ASADA"));
-        System.out.println(planetService.readPlanet("JUP7"));
-        planetService.updatePlanet("VENUS2", "ASAP6");
+        planetService.createPlanet(new Planet("VENUS2", "VENUS"));
+        System.out.println(planetService.readPlanet("JSAT2"));
+        planetService.updatePlanet("VENUS2", "VENUS6");
         planetService.deletePlanet("MARS");
         planetService.getAllPlanets().forEach(System.out::println);
 
