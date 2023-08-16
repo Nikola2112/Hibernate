@@ -1,10 +1,12 @@
-import entities.Client;
-import entities.Planet;
-import services.ClientCrudService;
-import services.PlanetCrudService;
-import utils.HibernateUtil;
+package global.goit;
 
-import utils.MigrationUtils;
+import global.goit.entities.Client;
+import global.goit.entities.Planet;
+import global.goit.services.ClientCrudService;
+import global.goit.services.PlanetCrudService;
+import global.goit.utils.HibernateUtil;
+
+import global.goit.utils.MigrationUtils;
 
 public class Launcher {
 
@@ -22,10 +24,10 @@ public class Launcher {
 
         PlanetCrudService planetService = new PlanetCrudService();
 
-        planetService.createPlanet(new Planet("VENUS2", "VENUS"));
-        System.out.println(planetService.readPlanet("JSAT2"));
-        planetService.updatePlanet("VENUS2", "VENUS6");
-        planetService.deletePlanet("MARS");
+        planetService.createPlanet(new Planet("BMW55", "BMW"));
+        System.out.println(planetService.readPlanet("VENERA88"));
+        planetService.updatePlanet("BMW55", "BMW7");
+        planetService.deletePlanet("JUPITER17");
         planetService.getAllPlanets().forEach(System.out::println);
 
         HibernateUtil.getInstance().close();

@@ -1,7 +1,6 @@
-package utils;
+package global.goit.utils;
 
 import org.flywaydb.core.Flyway;
-import utils.HibernateUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,5 +32,6 @@ public class MigrationUtils {
                 .load();
 
         flyway.migrate();
+
     }
 }

@@ -1,4 +1,4 @@
-package entities;
+package global.goit.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
