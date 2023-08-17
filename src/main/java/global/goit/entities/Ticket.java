@@ -10,6 +10,13 @@ import java.time.LocalDateTime;
 @Table(name = "ticket")
 public class Ticket {
 
+    public Ticket( Timestamp createdAt, Client client, Planet fromPlanetId, Planet toPlanetId) {
+        this.createdAt = createdAt;
+        this.client = client;
+        this.fromPlanetId = fromPlanetId;
+        this.toPlanetId = toPlanetId;
+    }
+
     @Id
     @Column(name = "ticket_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,12 +25,47 @@ public class Ticket {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @Column(name = "client_id")
-    private Long clientId;
+    @ManyToOne
+    @JoinColumn(name = "client_id", referencedColumnName = "client_id", nullable = false)
+    private Client client;
 
-    @Column(name = "from_planet_id")
-    private Long fromPlanetId;
+    @ManyToOne
+    @JoinColumn(name = "from_planet_id", referencedColumnName = "planet_id", nullable = false)
+    private Planet fromPlanetId;
 
-    @Column(name = "to_planet_id")
-    private Long toPlanetId;
+    @ManyToOne
+    @JoinColumn(name = "to_planet_id", referencedColumnName = "planet_id", nullable = false)
+    private Planet toPlanetId;
+
+    public Ticket() {
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{createdAt=" + createdAt +
+                ", client=" + client +
+                ", fromPlanetId=" + fromPlanetId +
+                ", toPlanetId=" + toPlanetId +
+                '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Planet getFromPlanetId() {
+        return fromPlanetId;
+    }
+
+    public Planet getToPlanetId() {
+        return toPlanetId;
+    }
 }

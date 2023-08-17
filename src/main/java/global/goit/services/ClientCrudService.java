@@ -14,7 +14,7 @@ public class ClientCrudService {
     public void createClient(Client client) {
         try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.persist(client);
+            session.merge(client);
             transaction.commit();
         } catch (SessionException e) {
             throw new RuntimeException();
